@@ -1,0 +1,34 @@
+﻿@model BlackRose.Models.Equipment
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1 align="center">Подробнее о @Html.DisplayFor(model => model.Name)</h1>
+
+<div class="container marketing">
+    <!-- START THE FEATURETTES -->
+    <hr class="featurette-divider">
+    <div class="row featurette">
+        <div class="col-md-7">
+            <h2 class="featurette-heading fw-normal lh-1">@Html.DisplayFor(model => model.Name)</h2>
+            <p class="lead">@Html.DisplayFor(model => model.LongDesc)</p>
+            <p class="lead">@Html.DisplayFor(model => model.Price)</p>
+        </div>
+        <div class="col-md-5">
+            <p>
+                <a class="card-text" asp-area="" asp-controller="EventAirsofts" asp-action="Details">
+                    <img style='width:500px; height:400px;' role="img" src="data:image/jpeg;base64,@(Convert.ToBase64String(Model.Image))" />
+                </a>
+            </p>
+        </div>
+    </div>
+    <div class="btn-group">
+        <a type="btn-btn-success" asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-sm btn-outline-secondary">Изменить</a>
+        <a type="btn-btn-success" asp-action="Index" class="btn btn-sm btn-outline-secondary">Вернуться назад</a>
+        <a type="btn-btn-success" asp-controller="ShopCart" asp-action="addtoCart" asp-route-id="@Model?.Id" class="btn btn-sm btn-outline-secondary">Корзина</a>
+    </div>
+    <hr class="featurette-divider">
+    <!-- /END THE FEATURETTES -->
+
+</div>

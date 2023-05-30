@@ -1,0 +1,42 @@
+﻿@model IEnumerable<BlackRose.Models.EventAirsoft>
+@using BlackRose.Models
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">ВАМ ЗДЕСЬ РАДЫ!</h1>
+</div>
+
+<div class="album py-5 bg-body-tertiary">
+    <h1 align="center"> Ближайшие Игры  </h1>
+    <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            @foreach (var item in Model)
+            {
+                <div class="col">
+                    <a class="navbar-brand" align="center"  asp-area="" asp-route-id="@item.Id" asp-controller="EventAirsofts" asp-action="Details">
+                        <h3>@Html.DisplayFor(modelItem => item.Name)</h3>
+                    </a>
+                    <div class="card shadow-sm">
+                        @if (item.PhotoFile != null)
+                        {
+                            <a class="card-text" asp-area="" asp-route-id="@item.Id" asp-controller="EventAirsofts" asp-action="Details">
+                                <img style='width:350px; height:220px;' role="img" src="data:image/jpeg;base64,@(Convert.ToBase64String(item.PhotoFile))" />
+                            </a>
+                        }
+                        <div class="card-body">
+                            <p class="card-text">Описание: @Html.DisplayFor(modelItem => item.ShortDesc)</p>
+                            <p class="card-text">Место проведения @Html.DisplayFor(modelItem => item.Venuet)</p>
+                            <p class="card-text">Цена @Html.DisplayFor(modelItem => item.PriceEvent)руб.</p>
+                            <p class="card-text">С @Html.DisplayFor(modelItem => item.DateStart) </p>
+                            <p class="card-text">По @Html.DisplayFor(modelItem => item.DateFinish)</p>
+                            <p class="card-text">Планируемое колличество игроков - @Html.DisplayFor(modelItem => item.NumberOfParticipants)</p>
+                            <p class="card-text">Прошло @Html.DisplayFor(modelItem => item.Passed)</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

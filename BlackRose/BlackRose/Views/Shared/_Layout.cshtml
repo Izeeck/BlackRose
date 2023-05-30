@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - BR</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/BR.styles.css" asp-append-version="true" />
+</head>
+<body>
+
+
+    <div class="container">
+        <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+            <div class="col-md-3 mb-2 mb-md-0">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                    <img class="bi" width="100" height="100" role="img" src="~/BR.jpg" />
+                </a>
+            </div>
+
+            <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+                <li><a class="nav-link px-2" asp-area="" asp-controller="Home" asp-action="Index">Главная</a></li>
+                <li><a class="nav-link px-2" asp-area="" asp-controller="AddRoles" asp-action="Index">Добавление Ролей</a></li>
+                <li><a class="nav-link px-2" asp-area="" asp-controller="EventAirsofts" asp-action="Index">Мероприятия</a></li>
+                <li><a class="nav-link px-2" asp-area="" asp-controller="Equipments" asp-action="Index">Аренда</a></li>
+                <li><a class="nav-link px-2" asp-area="" asp-controller="ShopCart" asp-action="Index">Корзина</a></li>
+            </ul>
+            <partial name="_LoginPartial" />
+        </header>
+    </div>
+
+
+
+
+    <div class="container">
+        <main role="main" class="container">
+@*            <div class="text-center">
+                <img class="bi" width="400" height="300" role="img" src="~/Fuck I.jpg" />
+            </div>*@
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2023 - BlackRose - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

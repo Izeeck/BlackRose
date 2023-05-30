@@ -1,0 +1,19 @@
+﻿@model ShopCartViewModel
+<h1 class="row justify-content-center">Корзина</h1>
+<h2 class="row justify-content-center"> К сожалению пока что пуста</h2>
+
+<div class="row justify-content-center">
+    @foreach (var el in Model.shopCart.listShopItems)
+    {
+        <div class="alert alert-warning mt-3">
+            <b>Автомобиль:</b>@el.EquipmentS.Name<br />
+            <b>Цена:</b> @el.EquipmentS.Price.ToString("c")
+        </div>
+    }
+    <hr />
+    
+    <div>
+        <a class="btn btn-danger" asp-controller="Order" asp-action="Checkout">Оплатить</a>
+        <a class="btn btn-danger" asp-controller="Equipments" asp-action="Index">Вернуться назад</a>
+    </div>
+</div>

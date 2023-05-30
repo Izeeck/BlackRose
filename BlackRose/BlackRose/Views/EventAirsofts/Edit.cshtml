@@ -1,0 +1,92 @@
+﻿@using BlackRose.Enum;
+@model BlackRose.Models.EventAirsoft
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1 class="row justify-content-center">Изменить @Model.Name</h1>
+
+
+<hr />
+<div class="row justify-content-center">
+    <div class="col-md-4">
+        <form asp-action="Edit" asp-controller="EventAirsofts" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ShortDesc" class="control-label"></label>
+                <input asp-for="ShortDesc" class="form-control" />
+                <span asp-validation-for="ShortDesc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LongDesc" class="control-label"></label>
+                <input asp-for="LongDesc" class="form-control" />
+                <span asp-validation-for="LongDesc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Venuet" class="control-label"></label>
+                <input asp-for="Venuet" class="form-control" />
+                <span asp-validation-for="Venuet" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PriceEvent" class="control-label"></label>
+                <input asp-for="PriceEvent" class="form-control" />
+                <span asp-validation-for="PriceEvent" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsFavorite" /> @Html.DisplayNameFor(model => model.IsFavorite)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumberOfParticipants" class="control-label"></label>
+                <input asp-for="NumberOfParticipants" class="form-control" />
+                <span asp-validation-for="NumberOfParticipants" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateStart" class="control-label"></label>
+                <input asp-for="DateStart" class="form-control" />
+                <span asp-validation-for="DateStart" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateFinish" class="control-label"></label>
+                <input asp-for="DateFinish" class="form-control" />
+                <span asp-validation-for="DateFinish" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Passed" /> @Html.DisplayNameFor(model => model.Passed)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhotoFile" class="control-label"></label>
+                <input asp-for="PhotoFile" type="file" class="form-control" />
+                <span asp-validation-for="PhotoFile" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Category"></label>
+                <select asp-for="Category" asp-items="@Html.GetEnumSelectList<CategoryEvent>()" class="form-control">
+                    <option>--Выбрать--</option>
+                </select>
+                <span asp-validation-for="Category" class="test-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Сохранить" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Вернуться назад</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

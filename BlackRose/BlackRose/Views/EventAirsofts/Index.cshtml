@@ -1,0 +1,52 @@
+﻿@model IEnumerable<BlackRose.Models.EventAirsoft>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 align="center">СТРАЙБОЛЬНЫЕ ИГРЫ</h1>
+
+<p>
+    <a asp-action="Create">Добавить новый</a>
+</p>
+
+<div class="album py-5 bg-body-tertiary">
+    <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            @foreach (var item in Model)
+            {
+                <div class="col">
+                    <a class="navbar-brand" align="center" asp-area="" asp-route-id="@item.Id" asp-controller="EventAirsofts" asp-action="Details">
+                        <h1>@Html.DisplayFor(modelItem => item.Name)</h1>
+                    </a>
+                    <div class="card shadow-sm">
+                        @if (item.PhotoFile != null)
+                        {
+                            <a class="card-text" asp-area="" asp-route-id="@item.Id" asp-controller="EventAirsofts" asp-action="Details">
+                                <img style='width:350px; height:220px;' role="img" src="data:image/jpeg;base64,@(Convert.ToBase64String(item.PhotoFile))" />
+                            </a>
+                        }
+                        <div class="card-body">
+                            <p class="card-text">Описание: @Html.DisplayFor(modelItem => item.ShortDesc)</p>
+                            <p class="card-text">Место проведения @Html.DisplayFor(modelItem => item.Venuet)</p>
+                            <p class="card-text">Цена @Html.DisplayFor(modelItem => item.PriceEvent)руб.</p>
+                            <p class="card-text">С @Html.DisplayFor(modelItem => item.DateStart) </p>
+                            <p class="card-text">По @Html.DisplayFor(modelItem => item.DateFinish)</p>
+                            <p class="card-text">Планируемое колличество игроков - @Html.DisplayFor(modelItem => item.NumberOfParticipants)</p>
+                            <p class="card-text">Прошло @Html.DisplayFor(modelItem => item.Passed)</p>
+
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <a type="btn-btn-success" asp-action="Edit" asp-route-id="@item.Id" type="button" class="btn btn-sm btn-outline-secondary">Изменить</a>
+                                    <a type="btn-btn-success" asp-action="Details" asp-route-id="@item.Id" type="button" class="btn btn-sm btn-outline-secondary">Инфо</a>
+                                    <a type="btn-btn-success" asp-action="Delete" asp-route-id="@item.Id" type="button" class="btn btn-sm btn-outline-secondary">Удалить</a>
+                                    <a type="btn-btn-success" asp-action="Basket" asp-route-id="@item.Id" type="button" class="btn btn-sm btn-outline-secondary">Регистрация</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

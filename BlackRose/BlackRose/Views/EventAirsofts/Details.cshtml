@@ -1,0 +1,35 @@
+﻿@model BlackRose.Models.EventAirsoft
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1 align="center">Подробнее о @Html.DisplayFor(model => model.Name)</h1>
+
+<div class="container marketing">
+    <!-- START THE FEATURETTES -->
+    <hr class="featurette-divider">
+    <div class="row featurette">
+        <div class="col-md-7">
+            <h2 class="featurette-heading fw-normal lh-1">@Html.DisplayFor(model => model.Name)</h2>
+            <p class="lead">@Html.DisplayFor(model => model.ShortDesc)</p>
+            <p class="lead">@Html.DisplayFor(model => model.Venuet)</p>
+            <p class="lead">Цена @Html.DisplayFor(model => model.PriceEvent) руб.</p>
+            <p class="lead">Колличество участников @Html.DisplayFor(model => model.NumberOfParticipants)</p>
+            <p>с @Html.DisplayFor(model => model.DateStart) по @Html.DisplayFor(model => model.DateFinish)</p>
+        </div>
+        <div class="col-md-5">
+            <p>
+                <a class="card-text" asp-area=""  asp-controller="EventAirsofts" asp-action="Details">
+                    <img style='width:500px; height:400px;' role="img" src="data:image/jpeg;base64,@(Convert.ToBase64String(Model.PhotoFile))" />
+                </a>
+            </p>
+        </div>
+    </div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Изменить</a> |
+    <a asp-action="Index">Вернуться назад</a>
+
+    <hr class="featurette-divider">
+    <!-- /END THE FEATURETTES -->
+
+</div>
